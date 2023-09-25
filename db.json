@@ -1,0 +1,117 @@
+{
+  "vehicleTypes": [
+    {
+      "id": 1,
+      "name": "economy"
+    },
+    {
+      "id": 2,
+      "name": "estate"
+    },
+    {
+      "id": 3,
+      "name": "luxury"
+    },
+    {
+      "id": 4,
+      "name": "SUV"
+    },
+    {
+      "id": 5,
+      "name": "cargo"
+    }
+  ],
+  "vehicles": [
+    {
+      "brand": "opel",
+      "model": "astra",
+      "year": "1998",
+      "fuel": "petrol",
+      "seats": "4",
+      "price_per_day": "10",
+      "available": 2,
+      "vehicle_type_id": "1",
+      "id": 1
+    },
+    {
+      "brand": "skoda",
+      "model": "octavia",
+      "year": "2002",
+      "fuel": "diesel",
+      "seats": "4",
+      "price_per_day": "1",
+      "available": "1",
+      "vehicle_type_id": "2",
+      "id": 7
+    },
+    {
+      "brand": "Testing",
+      "model": "Tester",
+      "year": "14",
+      "fuel": "gas",
+      "seats": "4",
+      "price_per_day": "16",
+      "available": "2",
+      "vehicle_type_id": "3",
+      "id": 8
+    }
+  ],
+  "customers": [
+    {
+      "fullname": "Example Hey User",
+      "email": "example@user.com",
+      "phone": "0893511903",
+      "id": 1
+    },
+    {
+      "fullname": "Example Two User",
+      "email": "etwo@user.com",
+      "phone": "0891353019",
+      "id": 2
+    }
+  ],
+  "rental-events": [
+    {
+      "id": 1,
+      "start_date": "25/09/2023",
+      "end_date": "30/09/2023",
+      "customer_id": "1",
+      "vehicle_id": "1"
+    },
+    {
+      "start_date": "25/09/2023",
+      "end_date": "28/09/2023",
+      "customer_id": "1",
+      "vehicle_id": "1",
+      "id": 2
+    },
+    {
+      "start_date": "25/09/2023",
+      "end_date": "25/09/2023",
+      "customer_id": 1,
+      "vehicle_id": 1,
+      "id": 3
+    },
+    {
+      "start_date": "25/09/2023",
+      "end_date": "25/09/2023",
+      "customer_id": 1,
+      "vehicle_id": 1,
+      "id": 4
+    },
+    {
+      "start_date": "25/09/2023",
+      "end_date": "25/09/2023",
+      "customer_id": 1,
+      "vehicle_id": 1,
+      "id": 5
+    },
+    {
+      "start_date": "25/09/2023",
+      "end_date": "25/09/2023",
+      "customer_id": 1,
+      "vehicle_id": 1,
+      "id": 6
+    }
+  ]
+}
