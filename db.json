@@ -29,7 +29,7 @@
       "fuel": "petrol",
       "seats": "4",
       "price_per_day": "10",
-      "available": 2,
+      "available": 1,
       "vehicle_type_id": "1",
       "id": 1
     },
@@ -45,15 +45,15 @@
       "id": 7
     },
     {
-      "brand": "Testing",
-      "model": "Tester",
-      "year": "14",
-      "fuel": "gas",
-      "seats": "4",
+      "brand": "Mercedes",
+      "model": "Benz",
+      "year": "1998",
+      "fuel": "petrol",
+      "seats": "5",
       "price_per_day": "16",
-      "available": "2",
+      "available": "6",
       "vehicle_type_id": "3",
-      "id": 8
+      "id": 9
     }
   ],
   "customers": [
@@ -112,6 +112,13 @@
       "customer_id": 1,
       "vehicle_id": 1,
       "id": 6
+    },
+    {
+      "start_date": "25/09/2023",
+      "end_date": "10/10/2023",
+      "customer_id": 1,
+      "vehicle_id": 1,
+      "id": 7
     }
   ]
 }

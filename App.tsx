@@ -258,6 +258,7 @@ function App(): JSX.Element {
   const [openCustomerSelect, setCustomerSelectOpen] = useState(false);
   const [vehicleItems, setVehicleItems] = useState<Array<ItemType<string>>>([]);
   const [openVehicleSelect, setVehicleSelectOpen] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   function handleEventSubmit() {
     fetch('http://localhost:3000/rental-events', {
@@ -293,6 +294,36 @@ function App(): JSX.Element {
     });
   }
 
+  const calculateAvailable = async () => {
+    let vehicle: Vehicle = await getVehicle(vId);
+
+    let diff: number = differenceInDays(
+      moment(startDate, 'DD/MM/YYYY'),
+      moment(endDate, 'DD/MM/YYYY'),
+    );
+
+    let pricePerDay: number = vehicle.price_per_day as unknown as number;
+
+    let totalPrice: number = diff * pricePerDay;
+
+    let priceWithDiscount = totalPrice;
+    console.log(diff);
+
+    if (diff > 3 && diff <= 5) {
+      priceWithDiscount = totalPrice - (totalPrice * 5) / 100;
+    }
+
+    if (diff > 5 && diff <= 10) {
+      priceWithDiscount = totalPrice - (totalPrice * 7) / 100;
+    }
+
+    if (diff > 10) {
+      priceWithDiscount = totalPrice - totalPrice / 10;
+    }
+
+    setTotalPrice(priceWithDiscount);
+  };
+
   useEffect(() => {
     mapCustomers();
     mapVehicles();
@@ -314,7 +345,7 @@ function App(): JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <View style={styles.viewStyle}>
+          <View style={styles.viewStyleNoZ}>
             <Text>Brand:</Text>
             <TextInput value={brand} onChangeText={onChangeBrand} />
 
@@ -422,10 +453,7 @@ function App(): JSX.Element {
             <Text>Start Date:</Text>
             <TextInput value={startDate} onChangeText={setStartDate} />
             <Text>End Date:</Text>
-            <TextInput
-              value={endDate}
-              onChangeText={endDate => setEndDate(endDate)}
-            />
+            <TextInput value={endDate} onChangeText={setEndDate} />
             <Text>Select Customer:</Text>
             <View
               style={{
@@ -459,15 +487,19 @@ function App(): JSX.Element {
                   zIndex: 30,
                   position: 'relative',
                 }}
+                onChangeValue={calculateAvailable}
               />
             </View>
             <Text style={{fontWeight: 'bold'}}>
               {' '}
               Total cost:{' '}
-              {differenceInDays(
+              {
+                /* differenceInDays(
                 moment(startDate, 'DD/MM/YYYY'),
                 moment(endDate, 'DD/MM/YYYY'),
-              ) * 5}{' '}
+              ) * 5 */ totalPrice
+              }{' '}
+              levs
             </Text>
             <Button onPress={() => handleEventSubmit()} title="Submit form" />
           </View>
@@ -479,6 +511,10 @@ function App(): JSX.Element {
 
 const styles = StyleSheet.create({
   viewStyle: {flex: 1, padding: 24, zIndex: -5},
+  viewStyleNoZ: {
+    flex: 1,
+    padding: 24,
+  },
 });
 
 export default App;
